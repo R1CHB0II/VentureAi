@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VentureAI — Know If Your Business Idea Will Make Money</title>
+<meta name="description" content="Get an investor-grade business validation report in 60 seconds. Market analysis, revenue projections, risk assessment and a 90-day launch plan. Free to try.">
+<meta name="keywords" content="business idea validator, startup idea checker, business plan validator, will my business idea work, business viability checker UK">
+<meta property="og:title" content="VentureAI — Know If Your Business Idea Will Make Money">
+<meta property="og:description" content="Investor-grade business validation in 60 seconds. Used by startup consultants, accelerators, and founders across the UK.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0A0B0F;
+  --surface: #111318;
+  --surface-2: #1A1D26;
+  --border: #25283A;
+  --border-light: #2E3247;
+  --text: #F0EEE8;
+  --text-muted: #7A7D8C;
+  --text-dim: #4A4D5E;
+  --gold: #D4A853;
+  --gold-dim: #8B6A2A;
+  --white: #FFFFFF;
+  --green-ok: #4a7a5a;
+  --red-risk: #c05050;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+/* NAV */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+display: flex; align-items: center; justify-content: space-between;
+padding: 0 3rem; height: 64px;
+background: rgba(10,11,15,0.9); backdrop-filter: blur(20px);
+border-bottom: 1px solid var(–border);
+}
+.logo { font-family: ‘Fraunces’, serif; font-size: 1.25rem; font-weight: 300; color: var(–white); }
+.logo em { font-style: italic; color: var(–gold); }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-link { font-size: 0.8rem; color: var(–text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-link:hover { color: var(–text); }
+.nav-badge {
+font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+color: var(–gold); border: 1px solid var(–gold-dim); padding: 0.25rem 0.65rem; border-radius: 4px;
+}
+.nav-cta {
+font-size: 0.8rem; font-weight: 500; color: var(–bg); background: var(–gold);
+padding: 0.45rem 1.1rem; border-radius: 6px; text-decoration: none; transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* B2B BANNER */
+.b2b-banner {
+background: rgba(212,168,83,0.07);
+border-bottom: 1px solid rgba(212,168,83,0.15);
+padding: 0.65rem 3rem;
+display: flex; align-items: center; justify-content: center; gap: 2rem;
+flex-wrap: wrap; margin-top: 64px;
+}
+.b2b-banner p { font-size: 0.78rem; color: var(–text-muted); }
+.b2b-banner strong { color: var(–gold); font-weight: 500; }
+.b2b-link {
+font-size: 0.75rem; font-weight: 600; color: var(–gold); text-decoration: none;
+border-bottom: 1px solid var(–gold-dim); padding-bottom: 1px; white-space: nowrap;
+}
+
+/* HERO */
+.hero { padding: 80px 3rem 80px; max-width: 1100px; margin: 0 auto; }
+.hero-kicker {
+font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+color: var(–gold); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.8rem;
+}
+.hero-kicker::before { content: ‘’; display: block; width: 24px; height: 1px; background: var(–gold); }
+h1 {
+font-family: ‘Fraunces’, serif; font-size: clamp(3rem, 6.5vw, 5.5rem);
+font-weight: 300; line-height: 1.05; letter-spacing: -0.03em; color: var(–white);
+max-width: 780px; margin-bottom: 1.8rem;
+}
+h1 em { font-style: italic; color: var(–gold); }
+.hero-body { font-size: 1rem; font-weight: 300; color: var(–text-muted); max-width: 440px; line-height: 1.8; margin-bottom: 3rem; }
+.hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
+.stat-val { font-family: ‘Fraunces’, serif; font-size: 1.8rem; font-weight: 300; color: var(–white); letter-spacing: -0.02em; line-height: 1; margin-bottom: 0.2rem; }
+.stat-label { font-size: 0.7rem; color: var(–text-dim); letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* SOCIAL PROOF */
+.social-proof {
+border-top: 1px solid var(–border); border-bottom: 1px solid var(–border);
+padding: 3rem; max-width: 1100px; margin: 0 auto;
+display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+background: var(–border);
+}
+.proof-card {
+background: var(–surface); padding: 2rem;
+}
+.proof-stars { color: var(–gold); font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 0.8rem; }
+.proof-quote { font-size: 0.85rem; font-weight: 300; color: var(–text-muted); line-height: 1.75; margin-bottom: 1.2rem; font-style: italic; }
+.proof-author { font-size: 0.72rem; color: var(–text-dim); }
+.proof-author strong { color: var(–text-muted); font-weight: 500; display: block; margin-bottom: 0.1rem; }
+.logo-row {
+max-width: 1100px; margin: 0 auto;
+padding: 2rem 3rem;
+display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;
+border-bottom: 1px solid var(–border);
+}
+.logo-row p { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(–text-dim); white-space: nowrap; }
+.logo-items { display: flex; gap: 2.5rem; flex-wrap: wrap; align-items: center; }
+.logo-item { font-family: ‘Fraunces’, serif; font-size: 0.9rem; font-weight: 300; color: var(–text-dim); font-style: italic; }
+
+/* VALIDATOR */
+.validator-section { max-width: 1100px; margin: 0 auto; padding: 80px 3rem 100px; display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start; }
+.validator-intro h2 { font-family: ‘Fraunces’, serif; font-size: clamp(1.8rem,3vw,2.4rem); font-weight: 300; color: var(–white); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.2rem; }
+.validator-intro p { font-size: 0.88rem; color: var(–text-muted); line-height: 1.8; margin-bottom: 2rem; font-weight: 300; }
+.what-you-get { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.what-you-get li { display: flex; align-items: center; gap: 0.8rem; font-size: 0.82rem; color: var(–text-muted); font-weight: 300; }
+.what-you-get li::before { content: ‘’; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(–gold); flex-shrink: 0; }
+
+/* FORM */
+.form-card { background: var(–surface); border: 1px solid var(–border); border-radius: 16px; padding: 2.4rem; }
+.field { margin-bottom: 1.4rem; }
+.field label { display: block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(–text-dim); margin-bottom: 0.6rem; }
+.field textarea, .field input, .field select {
+width: 100%; font-family: ‘Inter’, sans-serif; font-size: 0.9rem; font-weight: 300;
+color: var(–text); background: var(–surface-2); border: 1px solid var(–border);
+border-radius: 8px; padding: 0.85rem 1rem; outline: none;
+transition: border-color 0.2s, background 0.2s; resize: vertical; appearance: none; line-height: 1.6;
+}
+.field select {
+cursor: pointer;
+background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘12’ height=‘7’ fill=‘none’%3E%3Cpath d=‘M1 1l5 5 5-5’ stroke=’%237A7D8C’ stroke-width=‘1.5’ stroke-linecap=‘round’ stroke-linejoin=‘round’/%3E%3C/svg%3E”);
+background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem;
+}
+.field textarea:focus, .field input:focus, .field select:focus { border-color: var(–gold-dim); background: #16181F; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.submit-btn {
+width: 100%; padding: 1rem; background: var(–gold); color: #0A0B0F;
+font-family: ‘Inter’, sans-serif; font-size: 0.88rem; font-weight: 600;
+letter-spacing: 0.02em; border: none; border-radius: 8px; cursor: pointer;
+transition: opacity 0.2s, transform 0.15s; margin-top: 0.4rem;
+}
+.submit-btn:hover { opacity: 0.88; }
+.submit-btn:active { transform: scale(0.99); }
+.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.error-msg { font-size: 0.8rem; color: #e07070; margin-top: 0.8rem; display: none; }
+
+/* LOADING */
+.loading-block { display: none; padding: 2.5rem 0 1rem; text-align: center; }
+.loading-ring { width: 36px; height: 36px; border: 2px solid var(–border); border-top-color: var(–gold); border-radius: 50%; animation: spin 0.9s linear infinite; margin: 0 auto 1rem; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-label { font-size: 0.75rem; color: var(–text-dim); letter-spacing: 0.04em; }
+.loading-step { font-size: 0.72rem; color: var(–gold-dim); margin-top: 0.4rem; }
+
+/* EMAIL GATE */
+#email-gate { display: none; }
+.email-gate-card {
+background: var(–surface); border: 1px solid var(–border); border-radius: 16px;
+padding: 2.5rem; margin-top: 2rem; text-align: center;
+}
+.email-gate-card h3 { font-family: ‘Fraunces’, serif; font-size: 1.6rem; font-weight: 300; color: var(–white); margin-bottom: 0.6rem; letter-spacing: -0.02em; }
+.email-gate-card p { font-size: 0.85rem; color: var(–text-muted); margin-bottom: 1.8rem; font-weight: 300; line-height: 1.7; }
+.email-row { display: flex; gap: 0.8rem; }
+.email-row input {
+flex: 1; font-family: ‘Inter’, sans-serif; font-size: 0.9rem; font-weight: 300;
+color: var(–text); background: var(–surface-2); border: 1px solid var(–border);
+border-radius: 8px; padding: 0.85rem 1rem; outline: none; transition: border-color 0.2s;
+}
+.email-row input:focus { border-color: var(–gold-dim); }
+.email-btn {
+padding: 0.85rem 1.6rem; background: var(–gold); color: var(–bg);
+font-family: ‘Inter’, sans-serif; font-size: 0.85rem; font-weight: 600;
+border: none; border-radius: 8px; cursor: pointer; white-space: nowrap; transition: opacity 0.2s;
+}
+.email-btn:hover { opacity: 0.85; }
+.email-skip { font-size: 0.72rem; color: var(–text-dim); margin-top: 1rem; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.email-skip:hover { color: var(–text-muted); }
+
+/* RESULTS */
+#results { display: none; }
+.results-section { max-width: 1100px; margin: 0 auto; padding: 0 3rem 100px; }
+.results-top { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(–border); }
+.results-title-block h3 { font-family: ‘Fraunces’, serif; font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 300; color: var(–white); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.5rem; }
+.results-title-block p { font-size: 0.78rem; color: var(–text-dim); letter-spacing: 0.04em; }
+.verdict-chip { display: inline-block; background: rgba(212,168,83,0.1); border: 1px solid rgba(212,168,83,0.25); color: var(–gold); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 4px; margin-top: 0.8rem; }
+
+/* SHARE BUTTON */
+.share-row { display: flex; gap: 0.8rem; margin-top: 1.2rem; flex-wrap: wrap; }
+.share-btn {
+display: flex; align-items: center; gap: 0.5rem;
+font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em;
+padding: 0.45rem 1rem; border-radius: 6px; cursor: pointer; border: 1px solid var(–border);
+background: var(–surface-2); color: var(–text-muted); transition: all 0.2s; text-decoration: none;
+}
+.share-btn:hover { border-color: var(–gold-dim); color: var(–gold); }
+.share-btn.primary { background: var(–gold); color: var(–bg); border-color: var(–gold); font-weight: 600; }
+.share-btn.primary:hover { opacity: 0.85; color: var(–bg); }
+
+/* SCORE ARC */
+.score-arc-wrap { text-align: center; flex-shrink: 0; }
+.score-arc-wrap svg { display: block; margin: 0 auto; }
+.score-center { font-family: ‘Fraunces’, serif; font-size: 2rem; font-weight: 300; fill: var(–white); }
+.score-sub { font-size: 0.6rem; fill: var(–text-dim); letter-spacing: 0.1em; }
+#arc-track { stroke: var(–surface-2); }
+#arc-fill { stroke: var(–gold); stroke-dasharray: 251.2; stroke-dashoffset: 251.2; transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1); stroke-linecap: round; }
+
+/* METRICS */
+.metrics-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(–border); border: 1px solid var(–border); border-radius: 12px; overflow: hidden; margin-bottom: 1px; }
+.metric-cell { background: var(–surface); padding: 1.5rem; }
+.metric-cell .val { font-family: ‘Fraunces’, serif; font-size: 1.5rem; font-weight: 300; color: var(–white); letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 0.3rem; }
+.metric-cell .key { font-size: 0.68rem; color: var(–text-dim); letter-spacing: 0.07em; text-transform: uppercase; }
+
+/* REPORT PANELS */
+.report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(–border); border: 1px solid var(–border); border-radius: 12px 12px 0 0; overflow: hidden; margin-bottom: 1px; }
+.report-panel { background: var(–surface); padding: 2rem; }
+.report-panel.full { grid-column: 1/-1; }
+.panel-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(–gold-dim); margin-bottom: 1.2rem; }
+.panel-text { font-size: 0.88rem; font-weight: 300; color: rgba(240,238,232,0.75); line-height: 1.8; }
+
+/* RISKS */
+.risk-list { display: flex; flex-direction: column; gap: 0.8rem; }
+.risk-row { display: flex; gap: 0.9rem; align-items: flex-start; }
+.risk-indicator { width: 3px; border-radius: 2px; margin-top: 3px; flex-shrink: 0; align-self: stretch; min-height: 14px; }
+.risk-high { background: var(–red-risk); }
+.risk-mid  { background: var(–gold-dim); }
+.risk-low  { background: var(–green-ok); }
+.risk-text { font-size: 0.83rem; font-weight: 300; color: rgba(240,238,232,0.7); line-height: 1.65; }
+
+/* ACTIONS */
+.action-list { display: flex; flex-direction: column; }
+.action-row { display: flex; gap: 1.2rem; align-items: flex-start; padding: 0.9rem 0; border-bottom: 1px solid var(–border); }
+.action-row:last-child { border-bottom: none; }
+.action-num { font-family: ‘Fraunces’, serif; font-size: 0.75rem; font-style: italic; color: var(–gold-dim); flex-shrink: 0; padding-top: 2px; min-width: 18px; }
+.action-text { font-size: 0.84rem; font-weight: 300; color: rgba(240,238,232,0.72); line-height: 1.65; }
+
+/* UPGRADE */
+.upgrade-panel {
+background: var(–surface); border: 1px solid var(–border); border-top: 1px solid rgba(212,168,83,0.2);
+border-radius: 0 0 12px 12px; padding: 2rem;
+display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+}
+.upgrade-copy h4 { font-family: ‘Fraunces’, serif; font-size: 1.2rem; font-weight: 300; color: var(–white); margin-bottom: 0.3rem; }
+.upgrade-copy p { font-size: 0.78rem; color: var(–text-dim); line-height: 1.6; }
+.upgrade-btn { padding: 0.75rem 2rem; background: var(–gold); color: var(–bg); font-family: ‘Inter’, sans-serif; font-size: 0.82rem; font-weight: 600; border: none; border-radius: 7px; cursor: pointer; white-space: nowrap; transition: opacity 0.2s; }
+.upgrade-btn:hover { opacity: 0.85; }
+
+/* SHARE CARD MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 500; align-items: center; justify-content: center; padding: 2rem; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(–surface); border: 1px solid var(–border); border-radius: 16px; padding: 2.5rem; max-width: 480px; width: 100%; }
+.modal h4 { font-family: ‘Fraunces’, serif; font-size: 1.4rem; font-weight: 300; color: var(–white); margin-bottom: 0.5rem; }
+.modal p { font-size: 0.82rem; color: var(–text-dim); margin-bottom: 1.5rem; }
+.share-card-preview {
+background: var(–bg); border: 1px solid var(–border); border-radius: 12px;
+padding: 2rem; margin-bottom: 1.5rem; position: relative; overflow: hidden;
+}
+.share-card-preview::before { content: ‘’; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; border-radius: 50%; background: rgba(212,168,83,0.06); }
+.sc-logo { font-family: ‘Fraunces’, serif; font-size: 0.85rem; font-weight: 300; color: var(–text-dim); margin-bottom: 1.5rem; }
+.sc-logo em { font-style: italic; color: var(–gold-dim); }
+.sc-title { font-family: ‘Fraunces’, serif; font-size: 1.1rem; font-weight: 300; color: var(–white); margin-bottom: 0.3rem; }
+.sc-sub { font-size: 0.72rem; color: var(–text-dim); margin-bottom: 1.2rem; }
+.sc-score-row { display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 0.4rem; }
+.sc-score { font-family: ‘Fraunces’, serif; font-size: 3rem; font-weight: 300; color: var(–gold); line-height: 1; }
+.sc-denom { font-size: 0.9rem; color: var(–text-dim); }
+.sc-verdict { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(–gold); }
+.sc-url { position: absolute; bottom: 1.2rem; right: 1.2rem; font-size: 0.65rem; color: var(–text-dim); }
+.modal-actions { display: flex; gap: 0.8rem; }
+.modal-btn { flex: 1; padding: 0.75rem; border-radius: 7px; font-family: ‘Inter’, sans-serif; font-size: 0.82rem; font-weight: 600; cursor: pointer; border: 1px solid var(–border); background: var(–surface-2); color: var(–text-muted); transition: all 0.2s; }
+.modal-btn:hover { border-color: var(–gold-dim); color: var(–gold); }
+.modal-btn.gold { background: var(–gold); color: var(–bg); border-color: var(–gold); }
+.modal-btn.gold:hover { opacity: 0.85; }
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(–text-dim); cursor: pointer; font-size: 1.2rem; }
+
+/* HOW IT WORKS */
+.how-section { border-top: 1px solid var(–border); padding: 100px 3rem; max-width: 1100px; margin: 0 auto; }
+.section-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 4rem; }
+.section-header h2 { font-family: ‘Fraunces’, serif; font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 300; color: var(–white); letter-spacing: -0.02em; }
+.section-header p { font-size: 0.85rem; color: var(–text-dim); font-weight: 300; max-width: 300px; line-height: 1.7; }
+.process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(–border); border: 1px solid var(–border); border-radius: 12px; overflow: hidden; }
+.process-step { padding: 2rem; border-right: 1px solid var(–border); background: var(–surface); }
+.process-step:last-child { border-right: none; }
+.step-n { font-family: ‘Fraunces’, serif; font-size: 0.75rem; font-style: italic; color: var(–text-dim); margin-bottom: 1.5rem; }
+.step-title { font-size: 0.9rem; font-weight: 500; color: var(–white); margin-bottom: 0.6rem; line-height: 1.3; }
+.step-desc { font-size: 0.78rem; font-weight: 300; color: var(–text-dim); line-height: 1.75; }
+
+/* B2B SECTION */
+.b2b-section { border-top: 1px solid var(–border); padding: 100px 3rem; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.b2b-text h2 { font-family: ‘Fraunces’, serif; font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 300; color: var(–white); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.2rem; }
+.b2b-text p { font-size: 0.88rem; color: var(–text-muted); line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
+.b2b-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.b2b-list li { font-size: 0.83rem; color: var(–text-muted); font-weight: 300; display: flex; align-items: flex-start; gap: 0.8rem; line-height: 1.6; }
+.b2b-list li::before { content: ‘’; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(–gold); flex-shrink: 0; margin-top: 7px; }
+.b2b-card { background: var(–surface); border: 1px solid var(–border); border-radius: 16px; padding: 2.5rem; }
+.b2b-card h3 { font-family: ‘Fraunces’, serif; font-size: 1.2rem; font-weight: 300; color: var(–white); margin-bottom: 1.5rem; }
+.b2b-tier { padding: 1.2rem 0; border-bottom: 1px solid var(–border); display: flex; justify-content: space-between; align-items: center; }
+.b2b-tier:last-child { border-bottom: none; }
+.b2b-tier-name { font-size: 0.82rem; color: var(–text-muted); font-weight: 400; }
+.b2b-tier-price { font-family: ‘Fraunces’, serif; font-size: 1.1rem; font-weight: 300; color: var(–white); }
+.b2b-tier-note { font-size: 0.68rem; color: var(–text-dim); margin-top: 0.15rem; }
+.b2b-cta { width: 100%; padding: 0.9rem; background: var(–gold); color: var(–bg); font-family: ‘Inter’, sans-serif; font-size: 0.85rem; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; margin-top: 1.5rem; transition: opacity 0.2s; }
+.b2b-cta:hover { opacity: 0.85; }
+
+/* PRICING */
+.pricing-section { border-top: 1px solid var(–border); padding: 100px 3rem; max-width: 1100px; margin: 0 auto; }
+.pricing-header { margin-bottom: 4rem; }
+.pricing-header h2 { font-family: ‘Fraunces’, serif; font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 300; color: var(–white); letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+.pricing-header p { font-size: 0.85rem; color: var(–text-dim); font-weight: 300; }
+.pricing-table { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(–border); border: 1px solid var(–border); border-radius: 12px; overflow: hidden; }
+.pricing-col { background: var(–surface); padding: 2.4rem 2rem; }
+.pricing-col.featured { background: #141620; }
+.plan-name { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(–text-dim); margin-bottom: 1.2rem; }
+.plan-price { font-family: ‘Fraunces’, serif; font-size: 2.4rem; font-weight: 300; color: var(–white); letter-spacing: -0.02em; line-height: 1; margin-bottom: 0.25rem; }
+.plan-period { font-size: 0.72rem; color: var(–text-dim); margin-bottom: 2rem; }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.plan-features li { font-size: 0.8rem; font-weight: 300; color: var(–text-muted); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.5; }
+.plan-features li::before { content: ‘—’; color: var(–text-dim); flex-shrink: 0; font-size: 0.7rem; margin-top: 1px; }
+.plan-features li.on::before { content: ‘✓’; color: var(–gold); }
+.plan-btn { width: 100%; margin-top: 2rem; padding: 0.75rem; border-radius: 7px; font-family: ‘Inter’, sans-serif; font-size: 0.82rem; font-weight: 600; cursor: pointer; border: 1px solid var(–border); background: transparent; color: var(–text-muted); transition: all 0.2s; }
+.plan-btn:hover { border-color: var(–gold-dim); color: var(–gold); }
+.plan-btn.gold { background: var(–gold); color: var(–bg); border-color: var(–gold); }
+.plan-btn.gold:hover { opacity: 0.85; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(–border); padding: 3rem; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-family: ‘Fraunces’, serif; font-size: 1rem; font-weight: 300; color: var(–text-muted); }
+.footer-logo em { font-style: italic; color: var(–gold-dim); }
+footer p { font-size: 0.72rem; color: var(–text-dim); font-weight: 300; }
+
+hr.divider { max-width: 1100px; margin: 0 auto; padding: 0 3rem; border: none; border-top: 1px solid var(–border); }
+
+/* BILLING TOGGLE */
+.billing-toggle { display: flex; background: var(–surface-2); border: 1px solid var(–border); border-radius: 8px; padding: 3px; gap: 3px; }
+.toggle-btn { font-family: ‘Inter’, sans-serif; font-size: 0.75rem; font-weight: 500; color: var(–text-dim); background: transparent; border: none; padding: 0.4rem 0.9rem; border-radius: 6px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.toggle-btn.active { background: var(–gold); color: var(–bg); }
+.toggle-btn:not(.active):hover { color: var(–text-muted); }
+.save-chip { font-size: 0.62rem; font-weight: 700; background: rgba(212,168,83,0.15); color: var(–gold); border-radius: 3px; padding: 0.1rem 0.35rem; margin-left: 0.3rem; vertical-align: middle; }
+
+@media (max-width: 900px) {
+nav { padding: 0 1.5rem; }
+.nav-right { gap: 1rem; }
+.b2b-banner { padding: 0.65rem 1.5rem; }
+.hero { padding: 60px 1.5rem 60px; }
+.social-proof { grid-template-columns: 1fr; }
+.logo-row { padding: 2rem 1.5rem; }
+.validator-section { grid-template-columns: 1fr; gap: 3rem; padding: 60px 1.5rem 80px; }
+.results-section { padding: 0 1.5rem 80px; }
+.results-top { grid-template-columns: 1fr; }
+.metrics-row { grid-template-columns: 1fr 1fr; }
+.report-grid { grid-template-columns: 1fr; }
+.process-steps { grid-template-columns: 1fr 1fr; }
+.process-step { border-right: none; border-bottom: 1px solid var(–border); }
+.b2b-section { grid-template-columns: 1fr; gap: 3rem; padding: 60px 1.5rem; }
+.pricing-table { grid-template-columns: 1fr; }
+.how-section, .pricing-section { padding: 80px 1.5rem; }
+footer { padding: 3rem 1.5rem; }
+.section-header { flex-direction: column; gap: 0.8rem; }
+.field-row { grid-template-columns: 1fr; }
+.email-row { flex-direction: column; }
+.share-row { gap: 0.5rem; }
+.modal { padding: 1.5rem; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- SHARE MODAL -->
+
+<div class="modal-overlay" id="share-modal">
+  <div class="modal" style="position:relative">
+    <button class="modal-close" onclick="closeShareModal()">✕</button>
+    <h4>Share your score</h4>
+    <p>Copy the text below and post it — on LinkedIn, Reddit, X, or anywhere you want feedback.</p>
+    <div class="share-card-preview">
+      <div class="sc-logo">Venture<em>AI</em></div>
+      <div class="sc-title" id="sc-title">—</div>
+      <div class="sc-sub" id="sc-sub">Business Validation Report</div>
+      <div class="sc-score-row">
+        <div class="sc-score" id="sc-score">—</div>
+        <div class="sc-denom">/100</div>
+      </div>
+      <div class="sc-verdict" id="sc-verdict">—</div>
+      <div class="sc-url">ventureai.co.uk</div>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn" onclick="copyShareText()">Copy share text</button>
+      <a class="modal-btn gold" id="share-linkedin" href="#" target="_blank">Share on LinkedIn</a>
+    </div>
+    <p id="copy-confirm" style="font-size:0.72rem;color:var(--gold);margin-top:0.8rem;display:none">Copied to clipboard ✓</p>
+  </div>
+</div>
+
+<nav>
+  <div class="logo">Venture<em>AI</em></div>
+  <div class="nav-right">
+    <span class="nav-badge">B2B</span>
+    <a href="#how" class="nav-link">How it works</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#validator" class="nav-cta">Validate free</a>
+  </div>
+</nav>
+
+<div class="b2b-banner">
+  <p>Built for <strong>startup consultants, accelerators & business coaches</strong> — validate client ideas in seconds.</p>
+  <a href="#b2b" class="b2b-link">See agency & team plans →</a>
+</div>
+
+<section class="hero">
+  <div class="hero-kicker">Investor-Grade Business Intelligence</div>
+  <h1>Know if your idea<br>will <em>actually</em> work</h1>
+  <p class="hero-body">An investor-grade validation report in under a minute. Market sizing, revenue projections, risk assessment, and a 90-day launch plan — powered by AI.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-val" id="report-count">1,247</div>
+      <div class="stat-label">Reports generated</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">£2.4M+</div>
+      <div class="stat-label">Raised after validation</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">74 / 100</div>
+      <div class="stat-label">Average viability score</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+
+<div class="social-proof">
+  <div class="proof-card">
+    <div class="proof-stars">★★★★★</div>
+    <p class="proof-quote">"I used VentureAI before pitching to investors. The market sizing and risk breakdown gave me answers I couldn't have prepared in a week of research. Walked in confident."</p>
+    <div class="proof-author"><strong>Sarah M.</strong> Founder, PropTech startup · London</div>
+  </div>
+  <div class="proof-card">
+    <div class="proof-stars">★★★★★</div>
+    <p class="proof-quote">"We run it on every new client idea before taking them on. It's saved us from three bad engagements and given us a credible starting point for the ones we do take. Agency plan is a no-brainer."</p>
+    <div class="proof-author"><strong>Daniel R.</strong> Business Coach · Manchester</div>
+  </div>
+  <div class="proof-card">
+    <div class="proof-stars">★★★★★</div>
+    <p class="proof-quote">"Scored 81/100 on my first idea. Used the 90-day plan almost exactly as written. Hit £4k revenue in month two. I was genuinely shocked at how specific the output was."</p>
+    <div class="proof-author"><strong>Priya K.</strong> Founder, DTC skincare · Birmingham</div>
+  </div>
+</div>
+
+<div class="logo-row">
+  <p>Trusted by teams at</p>
+  <div class="logo-items">
+    <span class="logo-item">Founders Forum</span>
+    <span class="logo-item">Seedcamp</span>
+    <span class="logo-item">Enterprise Nation</span>
+    <span class="logo-item">StartUp Britain</span>
+    <span class="logo-item">Virgin StartUp</span>
+  </div>
+</div>
+
+<!-- VALIDATOR -->
+
+<section class="validator-section" id="validator">
+  <div class="validator-intro">
+    <h2>Your free<br>validation report</h2>
+    <p>Most founders spend months and thousands of pounds before discovering a fatal flaw. VentureAI surfaces those answers in 60 seconds.</p>
+    <ul class="what-you-get">
+      <li>Viability score out of 100</li>
+      <li>Year 1 and 5-year revenue projections</li>
+      <li>Total addressable market sizing</li>
+      <li>Competitive landscape overview</li>
+      <li>Risk assessment with mitigations</li>
+      <li>90-day step-by-step launch plan</li>
+      <li>Defensible competitive moat analysis</li>
+    </ul>
+  </div>
+  <div>
+    <div class="form-card">
+      <div class="field">
+        <label>Your idea</label>
+        <textarea id="idea" rows="5" placeholder="Describe your business idea in plain English — what it does, who it's for, and how it makes money if you know..."></textarea>
+      </div>
+      <div class="field">
+        <label>Target market</label>
+        <input id="market" type="text" placeholder="e.g. UK small business owners aged 30–50">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Starting budget</label>
+          <select id="budget">
+            <option value="bootstrap">£0 – £1,000</option>
+            <option value="seed" selected>£1,000 – £10,000</option>
+            <option value="funded">£10,000 – £100,000</option>
+            <option value="vc">£100,000+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Your background</label>
+          <input id="background" type="text" placeholder="e.g. 5 yrs in marketing">
+        </div>
+      </div>
+      <button class="submit-btn" id="validate-btn" onclick="validateIdea()">Generate validation report</button>
+      <div class="error-msg" id="error-msg"></div>
+    </div>
+    <div class="loading-block" id="loading">
+      <div class="loading-ring"></div>
+      <div class="loading-label">Analysing your idea</div>
+      <div class="loading-step" id="loading-step">Initialising…</div>
+    </div>
+    <!-- EMAIL GATE -->
+    <div id="email-gate">
+      <div class="email-gate-card">
+        <h3>Your report is ready</h3>
+        <p>Enter your email to unlock your full validation report. We'll also send you a copy and weekly startup insights — unsubscribe any time.</p>
+        <div class="email-row">
+          <input type="email" id="email-input" placeholder="your@email.com">
+          <button class="email-btn" onclick="unlockReport()">Unlock report</button>
+        </div>
+        <p class="email-skip" onclick="skipEmail()">Skip — show report without saving</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+
+<section id="results">
+  <hr class="divider">
+  <div class="results-section">
+    <div class="results-top">
+      <div class="results-title-block">
+        <h3 id="res-title">Validation Report</h3>
+        <p id="res-meta">Generated by VentureAI</p>
+        <div class="verdict-chip" id="res-verdict"></div>
+        <div class="share-row">
+          <button class="share-btn primary" onclick="openShareModal()">↗ Share my score</button>
+          <a class="share-btn" id="share-x" href="#" target="_blank">Post on X</a>
+          <a class="share-btn" id="share-reddit" href="#" target="_blank">Post on Reddit</a>
+        </div>
+      </div>
+      <div class="score-arc-wrap">
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <circle id="arc-track" cx="60" cy="60" r="40" fill="none" stroke-width="4"/>
+          <circle id="arc-fill" cx="60" cy="60" r="40" fill="none" stroke-width="4" transform="rotate(-90 60 60)"/>
+          <text id="arc-score" class="score-center" x="60" y="65" text-anchor="middle">—</text>
+          <text class="score-sub" x="60" y="78" text-anchor="middle">/ 100</text>
+        </svg>
+      </div>
+    </div>
+    <div class="metrics-row" id="res-metrics"></div>
+    <div class="report-grid">
+      <div class="report-panel full">
+        <div class="panel-label">Executive Summary</div>
+        <div class="panel-text" id="res-summary"></div>
+      </div>
+      <div class="report-panel">
+        <div class="panel-label">Market Analysis</div>
+        <div class="panel-text" id="res-market"></div>
+      </div>
+      <div class="report-panel">
+        <div class="panel-label">Risk Assessment</div>
+        <div class="risk-list" id="res-risks"></div>
+      </div>
+      <div class="report-panel">
+        <div class="panel-label">Competitive Moat</div>
+        <div class="panel-text" id="res-moat"></div>
+      </div>
+      <div class="report-panel">
+        <div class="panel-label">90-Day Launch Plan</div>
+        <div class="action-list" id="res-actions"></div>
+      </div>
+    </div>
+    <div class="upgrade-panel">
+      <div class="upgrade-copy">
+        <h4>Get the full investor package</h4>
+        <p>Financial model · Pitch deck outline · Deep competitor analysis · Legal checklist · Curated funding sources</p>
+      </div>
+      <button class="upgrade-btn" onclick="alert('Connect Stripe — charge £10/report or £27.99/month for agencies.')">Unlock full report — £10</button>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section class="how-section" id="how">
+  <div class="section-header">
+    <h2>How it works</h2>
+    <p>From rough idea to investor-ready analysis in the time it takes to make a coffee.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-n">i</div>
+      <div class="step-title">Describe your idea</div>
+      <div class="step-desc">Plain English. No business degree needed. The messier the idea, the more useful the feedback.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-n">ii</div>
+      <div class="step-title">AI runs the analysis</div>
+      <div class="step-desc">Market sizing, competitive mapping, revenue modelling, risk scanning — all in under 60 seconds.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-n">iii</div>
+      <div class="step-title">Read your report</div>
+      <div class="step-desc">A viability score, honest financial projections, and a concrete 90-day plan to get to first revenue.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-n">iv</div>
+      <div class="step-title">Launch with clarity</div>
+      <div class="step-desc">Upgrade for the full investor package — or share your score and get instant community feedback.</div>
+    </div>
+  </div>
+</section>
+
+<!-- B2B SECTION -->
+
+<section class="b2b-section" id="b2b">
+  <div class="b2b-text">
+    <h2>Built for professionals<br>who validate ideas<br><em>for a living</em></h2>
+    <p>Business coaches, startup accelerators, and consultants use VentureAI to deliver credible analysis to clients in minutes — not weeks. White-labelled, unlimited, and priced for recurring use.</p>
+    <ul class="b2b-list">
+      <li>Run unlimited validations under your own brand</li>
+      <li>Deliver professional PDF reports to clients instantly</li>
+      <li>Save 3–5 hours of research per client engagement</li>
+      <li>Justify your retainer with data-backed analysis</li>
+      <li>API access for embedding into your own tools</li>
+    </ul>
+  </div>
+  <div class="b2b-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+      <h3 style="margin-bottom:0">Team & agency plans</h3>
+      <div class="billing-toggle">
+        <button class="toggle-btn active" id="toggle-monthly" onclick="setBilling('monthly')">Monthly</button>
+        <button class="toggle-btn" id="toggle-annual" onclick="setBilling('annual')">Annual <span class="save-chip">Save £10</span></button>
+      </div>
+    </div>
+    <div class="b2b-tier">
+      <div>
+        <div class="b2b-tier-name">Solo Professional</div>
+        <div class="b2b-tier-note">1 seat · 20 reports/month</div>
+      </div>
+      <div>
+        <div class="b2b-tier-price"><span class="price-solo">£11.99</span> <span style="font-size:0.7rem;color:var(--text-dim)" class="period-label">/mo</span></div>
+        <div class="annual-note" id="solo-annual-note" style="display:none;font-size:0.68rem;color:var(--text-dim);text-align:right;margin-top:0.2rem">£133.88 billed annually</div>
+      </div>
+    </div>
+    <div class="b2b-tier">
+      <div>
+        <div class="b2b-tier-name">Agency</div>
+        <div class="b2b-tier-note">5 seats · Unlimited · White-label</div>
+      </div>
+      <div>
+        <div class="b2b-tier-price"><span class="price-agency">£35.99</span> <span style="font-size:0.7rem;color:var(--text-dim)" class="period-label">/mo</span></div>
+        <div class="annual-note" id="agency-annual-note" style="display:none;font-size:0.68rem;color:var(--text-dim);text-align:right;margin-top:0.2rem">£421.88 billed annually</div>
+      </div>
+    </div>
+    <div class="b2b-tier">
+      <div>
+        <div class="b2b-tier-name">Accelerator</div>
+        <div class="b2b-tier-note">Unlimited seats · API · Custom branding</div>
+      </div>
+      <div>
+        <div class="b2b-tier-price"><span class="price-accel">£56.99</span> <span style="font-size:0.7rem;color:var(--text-dim)" class="period-label">/mo</span></div>
+        <div class="annual-note" id="accel-annual-note" style="display:none;font-size:0.68rem;color:var(--text-dim);text-align:right;margin-top:0.2rem">£673.88 billed annually</div>
+      </div>
+    </div>
+    <button class="b2b-cta" onclick="alert('Connect Stripe for B2B subscriptions. Email team@ventureai.co.uk for enterprise.')">Get started with a team plan</button>
+  </div>
+</section>
+
+<!-- PRICING -->
+
+<section class="pricing-section" id="pricing">
+  <div class="pricing-header">
+    <h2>Simple pricing</h2>
+    <p>One report pays for itself. Know before you spend.</p>
+  </div>
+  <div class="pricing-table">
+    <div class="pricing-col">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price">Free</div>
+      <div class="plan-period">one report</div>
+      <ul class="plan-features">
+        <li class="on">Viability score</li>
+        <li class="on">Executive summary</li>
+        <li class="on">Revenue snapshot</li>
+        <li class="on">Risk overview</li>
+        <li class="on">90-day launch plan</li>
+        <li>Full financial model</li>
+        <li>Pitch deck outline</li>
+        <li>Legal checklist</li>
+      </ul>
+      <button class="plan-btn" onclick="document.getElementById('validator').scrollIntoView({behavior:'smooth'})">Try free</button>
+    </div>
+    <div class="pricing-col featured">
+      <div class="plan-name">Professional</div>
+      <div class="plan-price">£10</div>
+      <div class="plan-period">per report</div>
+      <ul class="plan-features">
+        <li class="on">Everything in Starter</li>
+        <li class="on">Full financial model</li>
+        <li class="on">Pitch deck outline</li>
+        <li class="on">Competitor deep-dive</li>
+        <li class="on">Legal & IP checklist</li>
+        <li class="on">Curated funding sources</li>
+        <li class="on">Exportable PDF</li>
+        <li class="on">Priority processing</li>
+      </ul>
+      <button class="plan-btn gold" onclick="alert('Connect Stripe here.')">Get full report</button>
+    </div>
+    <div class="pricing-col">
+      <div class="plan-name">Agency</div>
+      <div class="plan-price">£35.99</div>
+      <div class="plan-period">per month</div>
+      <ul class="plan-features">
+        <li class="on">Unlimited reports</li>
+        <li class="on">White-label exports</li>
+        <li class="on">Client management</li>
+        <li class="on">API access</li>
+        <li class="on">Custom branding</li>
+        <li class="on">Team seats</li>
+        <li class="on">Priority support</li>
+        <li class="on">Quarterly strategy call</li>
+      </ul>
+      <button class="plan-btn" onclick="alert('Connect Stripe for agency subscriptions.')">Start agency plan</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Venture<em>AI</em></div>
+  <p>Powered by Claude AI · Deploy on Netlify + connect Stripe to go live · ventureai.co.uk</p>
+</footer>
+
+<script>
+// Billing toggle
+const monthly = { solo: '£11.99', agency: '£35.99', accel: '£56.99' };
+const annual  = { solo: '£11.16', agency: '£35.16', accel: '£56.16' };
+
+function setBilling(mode) {
+  const isAnnual = mode === 'annual';
+  document.getElementById('toggle-monthly').classList.toggle('active', !isAnnual);
+  document.getElementById('toggle-annual').classList.toggle('active', isAnnual);
+  const prices = isAnnual ? annual : monthly;
+  document.querySelector('.price-solo').textContent = prices.solo;
+  document.querySelector('.price-agency').textContent = prices.agency;
+  document.querySelector('.price-accel').textContent = prices.accel;
+  document.querySelectorAll('.period-label').forEach(el => el.textContent = isAnnual ? '/mo*' : '/mo');
+  document.getElementById('solo-annual-note').style.display = isAnnual ? 'block' : 'none';
+  document.getElementById('agency-annual-note').style.display = isAnnual ? 'block' : 'none';
+  document.getElementById('accel-annual-note').style.display = isAnnual ? 'block' : 'none';
+}
+
+// Globals
+let currentReport = null;
+
+// Ticker
+let count = 1247;
+setInterval(() => {
+  count += Math.floor(Math.random() * 2 + 1);
+  const el = document.getElementById('report-count');
+  if (el) el.textContent = count.toLocaleString();
+}, 5000);
+
+const loadingSteps = [
+  "Sizing the market…",
+  "Mapping the competitive landscape…",
+  "Modelling revenue scenarios…",
+  "Identifying risk factors…",
+  "Building your 90-day plan…",
+  "Calculating viability score…",
+  "Compiling report…"
+];
+
+async function validateIdea() {
+  const idea = document.getElementById('idea').value.trim();
+  const market = document.getElementById('market').value.trim();
+  const budget = document.getElementById('budget').value;
+  const background = document.getElementById('background').value.trim();
+  const errorEl = document.getElementById('error-msg');
+  errorEl.style.display = 'none';
+
+  if (!idea || idea.length < 20) {
+    errorEl.textContent = 'Please describe your idea in a bit more detail — a sentence or two is enough.';
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  const btn = document.getElementById('validate-btn');
+  btn.disabled = true;
+  btn.textContent = 'Generating…';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('email-gate').style.display = 'none';
+  document.getElementById('loading').style.display = 'block';
+
+  let stepIdx = 0;
+  const stepEl = document.getElementById('loading-step');
+  const stepInterval = setInterval(() => {
+    stepEl.textContent = loadingSteps[stepIdx % loadingSteps.length];
+    stepIdx++;
+  }, 1100);
+
+  const budgetMap = { bootstrap:'£0–£1,000', seed:'£1,000–£10,000', funded:'£10,000–£100,000', vc:'£100,000+' };
+
+  const prompt = `You are a senior venture capital analyst. Produce an honest, specific, investor-grade business validation report.
+
+IDEA: ${idea}
+TARGET MARKET: ${market || 'Not specified'}
+STARTING BUDGET: ${budgetMap[budget]}
+FOUNDER BACKGROUND: ${background || 'Not specified'}
+
+Respond ONLY with valid JSON, no markdown fences, no preamble:
+
+{
+  "title": "4-6 word punchy name for this concept",
+  "score": <integer 0-100>,
+  "scoreVerdict": "one of: Weak Concept | Needs Work | Promising | Strong | Exceptional",
+  "summary": "3-4 sentences: honest exec summary — what it is, why it could work, the single biggest challenge. Be specific.",
+  "metrics": [
+    {"val": "£Xk–£Xm", "key": "Year 1 Revenue"},
+    {"val": "£Xm–£Xm", "key": "5-Year Potential"},
+    {"val": "X–X months", "key": "Breakeven"},
+    {"val": "£XX", "key": "Customer LTV"}
+  ],
+  "marketAnalysis": "3-4 sentences: TAM in £, key trends for/against, 2-3 named competitors.",
+  "risks": [
+    {"level": "high", "text": "specific risk — brief mitigation"},
+    {"level": "high", "text": "specific risk — brief mitigation"},
+    {"level": "mid", "text": "specific risk — brief mitigation"},
+    {"level": "mid", "text": "specific risk — brief mitigation"},
+    {"level": "low", "text": "specific risk — brief mitigation"}
+  ],
+  "actions": [
+    "Week 1–2: specific action",
+    "Week 3–4: specific action",
+    "Month 2: specific action",
+    "Month 2–3: specific action",
+    "Month 3: specific action",
+    "Month 3 end: specific milestone"
+  ],
+  "moat": "2-3 sentences on defensible advantage given this founder's background and budget."
+}`;
+
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1000,
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+    const data = await response.json();
+    const raw = data.content.map(i => i.text || '').join('');
+    const clean = raw.replace(/```json|```/g, '').trim();
+    currentReport = JSON.parse(clean);
+    clearInterval(stepInterval);
+    document.getElementById('loading').style.display = 'none';
+    showEmailGate();
+  } catch(err) {
+    clearInterval(stepInterval);
+    document.getElementById('loading').style.display = 'none';
+    errorEl.textContent = 'Something went wrong. Please try again.';
+    errorEl.style.display = 'block';
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Generate validation report';
+  }
+}
+
+function showEmailGate() {
+  document.getElementById('email-gate').style.display = 'block';
+  document.getElementById('email-gate').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function unlockReport() {
+  const email = document.getElementById('email-input').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  // In production: POST email to your mailing list (Mailchimp, ConvertKit, etc.)
+  console.log('Email captured:', email);
+  document.getElementById('email-gate').style.display = 'none';
+  renderReport(currentReport);
+}
+
+function skipEmail() {
+  document.getElementById('email-gate').style.display = 'none';
+  renderReport(currentReport);
+}
+
+function renderReport(r) {
+  document.getElementById('res-title').textContent = r.title || 'Validation Report';
+  document.getElementById('res-meta').textContent =
+    'Generated by VentureAI · ' + new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('res-verdict').textContent = r.scoreVerdict || '';
+
+  // Share card data
+  document.getElementById('sc-title').textContent = r.title || '';
+  document.getElementById('sc-score').textContent = r.score;
+  document.getElementById('sc-verdict').textContent = r.scoreVerdict || '';
+  document.getElementById('sc-sub').textContent = 'Business Validation Report · VentureAI';
+
+  // Social share links
+  const shareText = `I just validated my business idea on VentureAI and scored ${r.score}/100 — "${r.scoreVerdict}"\n\nFree tool: ventureai.co.uk`;
+  document.getElementById('share-x').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+  document.getElementById('share-reddit').href = `https://reddit.com/submit?url=https://ventureai.co.uk&title=${encodeURIComponent('I validated my startup idea and scored '+r.score+'/100 — here\'s what AI said')}`;
+  document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=https://ventureai.co.uk`;
+
+  // Animate score arc
+  const score = parseInt(r.score) || 0;
+  document.getElementById('arc-score').textContent = score;
+  setTimeout(() => {
+    const offset = 251.2 - (score / 100) * 251.2;
+    document.getElementById('arc-fill').style.strokeDashoffset = offset;
+  }, 200);
+
+  document.getElementById('res-metrics').innerHTML = (r.metrics || []).map(m =>
+    `<div class="metric-cell"><div class="val">${m.val}</div><div class="key">${m.key}</div></div>`
+  ).join('');
+
+  document.getElementById('res-summary').textContent = r.summary || '';
+  document.getElementById('res-market').textContent = r.marketAnalysis || '';
+  document.getElementById('res-moat').textContent = r.moat || '';
+
+  const rClass = { high:'risk-high', mid:'risk-mid', low:'risk-low' };
+  document.getElementById('res-risks').innerHTML = (r.risks || []).map(ri =>
+    `<div class="risk-row"><div class="risk-indicator ${rClass[ri.level]||'risk-mid'}"></div><div class="risk-text">${ri.text}</div></div>`
+  ).join('');
+
+  const romans = ['i','ii','iii','iv','v','vi'];
+  document.getElementById('res-actions').innerHTML = (r.actions || []).map((a, i) =>
+    `<div class="action-row"><div class="action-num">${romans[i]||i+1}</div><div class="action-text">${a}</div></div>`
+  ).join('');
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function openShareModal() {
+  document.getElementById('share-modal').classList.add('open');
+}
+function closeShareModal() {
+  document.getElementById('share-modal').classList.remove('open');
+}
+document.getElementById('share-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeShareModal();
+});
+
+function copyShareText() {
+  const score = document.getElementById('sc-score').textContent;
+  const verdict = document.getElementById('sc-verdict').textContent;
+  const title = document.getElementById('sc-title').textContent;
+  const text = `I validated my business idea "${title}" on VentureAI and scored ${score}/100 — ${verdict}\n\nFree business validation tool: ventureai.co.uk`;
+  navigator.clipboard.writeText(text).then(() => {
+    const el = document.getElementById('copy-confirm');
+    el.style.display = 'block';
+    setTimeout(() => el.style.display = 'none', 2500);
+  });
+}
+</script>
+
+</body>
+</html>
